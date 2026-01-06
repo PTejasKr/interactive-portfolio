@@ -15,6 +15,9 @@ export interface GitHubRepo {
   forks_count: number;
   topics: string[];
   updated_at: string;
+  owner: {
+    login: string;
+  };
 }
 
 export interface GitHubUser {

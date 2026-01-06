@@ -38,7 +38,7 @@ export default {
         jp: ['Noto Sans JP', 'sans-serif'],
       },
     },
-    darkMode: 'selector', // Use [data-theme="dark"] attribute
+    darkMode: ['selector', '[data-theme="dark"]'], // Use [data-theme="dark"] attribute
   },
   plugins: [],
 };

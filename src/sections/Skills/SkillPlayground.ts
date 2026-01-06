@@ -52,7 +52,7 @@ export class SkillPlayground extends Section {
         ${row.map((skill, i) => `
           <div class="skill-orb-wrapper relative flex-shrink-0" data-skill="${skill.name}" style="--delay: ${(rowIndex * 2 + i) * 0.1}s">
              <div class="skill-orb bg-white shadow-lg rounded-full w-24 h-24 md:w-32 md:h-32 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-xl relative z-10 p-4" data-cursor-hover>
-              <img src="${skill.logoUrl}" alt="${skill.name}" class="w-12 h-12 md:w-16 md:h-16 object-contain mb-2 pointer-events-none" />
+              <img src="${skill.logoUrl}" alt="${skill.name}" loading="lazy" width="64" height="64" class="w-12 h-12 md:w-16 md:h-16 object-contain mb-2 pointer-events-none" />
               <span class="text-xs md:text-sm font-medium text-dark">${skill.name}</span>
             </div>
             <div class="skill-rings absolute inset-0 pointer-events-none -z-0 scale-150 opacity-0 hover:opacity-100 transition-opacity">

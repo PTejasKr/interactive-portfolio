@@ -115,8 +115,8 @@ export class GitHubPark extends Section {
 
     try {
       const username = session?.user?.user_metadata?.user_name || 'PTejasKr';
-      // Fetch public repos if not signed in, or own repos if signed in
-      const repos = await githubService.getRepos(username, { sort: 'updated', per_page: 9 });
+      // Fetch up to 100 repos (page 1) to "sync all" as requested
+      const repos = await githubService.getRepos(username, { sort: 'updated', per_page: 100 });
 
       const stats = githubService.calculateStackStats(repos);
       if (Object.keys(stats).length > 0) {
@@ -130,17 +130,34 @@ export class GitHubPark extends Section {
         return;
       }
 
-      repos.forEach((repo) => {
-        const project = {
-          name: repo.name,
-          description: repo.description,
-          html_url: repo.html_url,
-          homepage: repo.homepage,
-          language: repo.language,
-          stargazers_count: repo.stargazers_count,
-          forks_count: repo.forks_count,
-          topics: repo.topics || []
-        };
+      // Fetch languages for all repos in parallel (limit might be an issue, but requested feature)
+      // To satisfy "sync all" and "show language bar", we need this data.
+      // We'll process them in batches if needed, but for now Promise.all for simplicity.
+      // Note: This matches the user's "all" requirement.
+      const projectsWithLanguages = await Promise.all(
+        repos.map(async (repo) => {
+          let languages = {};
+          try {
+            languages = await githubService.getLanguages(repo.owner.login, repo.name);
+          } catch (e) {
+            console.warn(`Failed to load languages for ${repo.name}`);
+          }
+
+          return {
+            name: repo.name,
+            description: repo.description,
+            html_url: repo.html_url,
+            homepage: repo.homepage,
+            language: repo.language,
+            stargazers_count: repo.stargazers_count,
+            forks_count: repo.forks_count,
+            topics: repo.topics || [],
+            languages: languages
+          };
+        })
+      );
+
+      projectsWithLanguages.forEach((project) => {
         const card = new ProjectCard(project);
         grid.insertAdjacentHTML('beforeend', card.render());
       });

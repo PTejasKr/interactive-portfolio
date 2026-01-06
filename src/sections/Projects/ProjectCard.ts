@@ -10,6 +10,7 @@ export interface ProjectData {
   stargazers_count: number;
   forks_count: number;
   topics: string[];
+  languages?: Record<string, number>;
 }
 
 export class ProjectCard {
@@ -20,16 +21,17 @@ export class ProjectCard {
   }
 
   render(): string {
-    const { name, description, html_url, homepage, language, stargazers_count, topics } = this.data;
+    const { name, description, html_url, homepage, language, stargazers_count, topics, languages } = this.data;
 
     const category = this.determineCategory(language, topics);
+    const languageBar = this.renderLanguageBar(languages);
 
     return `
-      <div class="project-card glass-card rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-shadow" data-category="${category}" data-cursor-hover>
-        <div class="p-6">
+      <div class="project-card glass-card rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-shadow flex flex-col h-full" data-category="${category}" data-cursor-hover>
+        <div class="p-6 flex-grow">
           <div class="flex items-start justify-between mb-4">
-            <h3 class="text-xl font-bold text-dark truncate">${name}</h3>
-            <div class="flex items-center gap-1 text-gray-600 font-medium">
+            <h3 class="text-xl font-bold text-dark truncate pr-2">${name}</h3>
+            <div class="flex items-center gap-1 text-gray-600 font-medium whitespace-nowrap">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
               </svg>
@@ -37,30 +39,34 @@ export class ProjectCard {
             </div>
           </div>
           
-          <p class="text-gray-800 text-sm mb-4 line-clamp-2 leading-relaxed">${description || 'No description available'}</p>
+          <p class="text-gray-800 text-sm mb-4 line-clamp-3 leading-relaxed">${description || 'No description available'}</p>
           
           <div class="flex flex-wrap gap-2 mb-4">
             ${topics
         .slice(0, 3)
-        .map((topic) => `<span class="px-2 py-1 text-xs bg-accent-aqua/20 text-accent-aqua rounded-full">${topic}</span>`)
+        .map((topic) => `<span class="px-2 py-1 text-xs bg-accent-aqua/20 text-accent-aqua rounded-full border border-accent-aqua/10">${topic}</span>`)
         .join('')}
           </div>
-          
-          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+        </div>
+        
+        <div class="p-6 pt-0 mt-auto">
+           ${languageBar}
+
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100/50">
             <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full" style="background: ${this.getLanguageColor(language)}"></span>
-              <span class="text-sm text-gray-600">${language || 'Unknown'}</span>
+              <span class="w-3 h-3 rounded-full shadow-sm" style="background: ${this.getLanguageColor(language)}"></span>
+              <span class="text-sm text-gray-600 font-medium">${language || 'Unknown'}</span>
             </div>
             
             <div class="flex gap-3">
-              <a href="${html_url}" target="_blank" rel="noopener" class="text-gray-500 hover:text-dark transition-colors" data-cursor-hover>
+              <a href="${html_url}" target="_blank" rel="noopener" class="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-500 hover:text-dark" data-cursor-hover title="View Code">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
                 </svg>
               </a>
               ${homepage
         ? `
-                <a href="${homepage}" target="_blank" rel="noopener" class="text-gray-500 hover:text-accent-aqua transition-colors" data-cursor-hover>
+                <a href="${homepage}" target="_blank" rel="noopener" class="p-2 rounded-full hover:bg-gray-100 transition-colors text-gray-500 hover:text-accent-aqua" data-cursor-hover title="View Live">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
                   </svg>
@@ -73,6 +79,27 @@ export class ProjectCard {
         </div>
       </div>
     `;
+  }
+
+  private renderLanguageBar(languages: Record<string, number> | undefined): string {
+    if (!languages || Object.keys(languages).length === 0) return '';
+
+    const total = Object.values(languages).reduce((a, b) => a + b, 0);
+    const sortedLangs = Object.entries(languages)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 5); // Start with top 5
+
+    let barHtml = '<div class="flex h-2 w-full rounded-full overflow-hidden mb-3 bg-gray-100">';
+
+    sortedLangs.forEach(([lang, count]) => {
+      const percent = (count / total) * 100;
+      if (percent < 1) return; // Skip tiny specks
+      const color = this.getLanguageColor(lang);
+      barHtml += `<div style="width: ${percent}%; background-color: ${color}" title="${lang}: ${Math.round(percent)}%"></div>`;
+    });
+
+    barHtml += '</div>';
+    return barHtml;
   }
 
   private determineCategory(language: string, topics: string[]): string {

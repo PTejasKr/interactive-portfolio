@@ -1,0 +1,29 @@
+src/app/app.config.ts(27,30): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+src/app/app.config.ts(28,30): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+src/app/app.config.ts(29,30): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+src/av/visual.sync.ts(32,42): error TS2345: Argument of type 'Uint8Array<ArrayBufferLike>' is not assignable to parameter of type 'Uint8Array<ArrayBuffer>'.
+  Type 'ArrayBufferLike' is not assignable to type 'ArrayBuffer'.
+    Type 'SharedArrayBuffer' is not assignable to type 'ArrayBuffer'.
+      Types of property '[Symbol.toStringTag]' are incompatible.
+        Type '"SharedArrayBuffer"' is not assignable to type '"ArrayBuffer"'.
+src/components/cursor/CustomCursor.ts(12,11): error TS6133: 'isHovering' is declared but its value is never read.
+src/components/cursor/CustomCursor.ts(13,11): error TS6133: 'isClicking' is declared but its value is never read.
+src/components/layout/Header.ts(2,1): error TS6133: 'navigateTo' is declared but its value is never read.
+src/components/layout/Header.ts(3,1): error TS6133: 'appConfig' is declared but its value is never read.
+src/components/layout/Header.ts(5,1): error TS6133: 'gsap' is declared but its value is never read.
+src/components/mascot/MascotEyes.ts(6,11): error TS6133: 'leftEye' is declared but its value is never read.
+src/components/mascot/MascotEyes.ts(7,11): error TS6133: 'rightEye' is declared but its value is never read.
+src/components/mascot/MascotSpeech.ts(8,11): error TS6133: 'isVisible' is declared but its value is never read.
+src/components/particles/SoundReactiveParticles.ts(54,40): error TS2345: Argument of type 'Uint8Array<ArrayBufferLike>' is not assignable to parameter of type 'Uint8Array<ArrayBuffer>'.
+  Type 'ArrayBufferLike' is not assignable to type 'ArrayBuffer'.
+    Type 'SharedArrayBuffer' is not assignable to type 'ArrayBuffer'.
+      Types of property '[Symbol.toStringTag]' are incompatible.
+        Type '"SharedArrayBuffer"' is not assignable to type '"ArrayBuffer"'.
+src/components/ui/SoundToggle.ts(51,37): error TS2554: Expected 0 arguments, but got 1.
+src/components/ui/StackBar.ts(2,1): error TS6133: 'gsap' is declared but its value is never read.
+src/sections/Landing/landing.animations.ts(62,15): error TS6133: 'char' is declared but its value is never read.
+src/sections/Projects/ProjectCard.ts(23,80): error TS6133: 'forks_count' is declared but its value is never read.
+src/sections/Skills/SkillOrb.ts(14,11): error TS6133: 'data' is declared but its value is never read.
+src/sections/Skills/SkillPlayground.ts(26,11): error TS6133: 'orbs' is declared but its value is never read.
+src/sections/Skills/skills.logic.ts(49,13): error TS6133: 'skillName' is declared but its value is never read.
+src/utils/device.detect.ts(92,18): error TS2339: Property 'connection' does not exist on type 'Navigator'.

@@ -1,0 +1,16 @@
+{
+  "name": "Interactive Portfolio",
+  "short_name": "Portfolio",
+  "description": "Interactive Mascot-Based Developer Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F0E6",
+  "theme_color": "#4FD1C5",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}

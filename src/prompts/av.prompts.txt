@@ -1,0 +1,41 @@
+AUDIO-VISUAL SYSTEM PROMPTS
+
+=== Audio Manager ===
+Create Howler.js audio manager that:
+- Preloads all sounds on initialization
+- Provides play/stop/fade methods for each sound
+- Implements global volume control (max 0.6)
+- Respects system "reduced motion" preferences
+- Supports crossfade between ambient tracks
+
+=== Sound Mapping ===
+Configure sound library:
+UI SOUNDS (volume 0.2-0.3):
+- hover.wav: soft blip on interactive elements
+- click.wav: satisfying pop on clicks
+- transition.wav: whoosh on section changes
+
+MASCOT SOUNDS (volume 0.3-0.5):
+- giggle-soft.wav: gentle laugh on belly hover
+- giggle-big.wav: hearty laugh on belly click
+- idle-breath.wav: ambient breathing loop
+- sleepy.wav: yawn sound for sleep state
+
+AMBIENT (volume 0.1-0.2):
+- background-loop.mp3: subtle ambient music
+
+=== Visual Sync ===
+Implement Web Audio API analyzer:
+- FFT size 256 for performance
+- Extract bass, mid, high frequency ranges
+- Beat detection with 0.7 threshold
+- Smooth frequency data with 0.8 time constant
+- Broadcast updates at 60fps to subscribers
+
+=== Particle Reactivity ===
+Connect particles to audio:
+- Bass hits increase particle size (1.5x)
+- Mid frequencies affect particle speed
+- High frequencies control opacity
+- Beat detection triggers particle burst
+- Smooth interpolation between states

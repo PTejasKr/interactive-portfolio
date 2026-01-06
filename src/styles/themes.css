@@ -1,0 +1,86 @@
+/* themes.css - Theme variables and dark mode support */
+
+:root {
+  /* Light theme (default) - Premium Beige & Floating Dots */
+  --bg-primary: #FDFBF7;
+  /* Premium Beige/Off-white */
+  --bg-secondary: #FFFFFF;
+  /* Pure White for panels */
+  --bg-tertiary: #F0EAE0;
+  /* Slightly darker beige */
+
+  --text-primary: #000000;
+  /* Pure Black for high contrast */
+  --text-secondary: #333333;
+  /* Dark Gray for high contrast */
+  --text-tertiary: #555555;
+  /* Medium Gray for high contrast */
+
+  --accent-primary: #D7CCC8;
+  /* Light Brown */
+  --accent-secondary: #A1887F;
+  /* Medium Brown */
+  --accent-tertiary: #8D6E63;
+
+  --particle-color: rgba(141, 110, 99, 0.6);
+  /* #8D6E63 at 60% opacity */
+
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+
+  --mascot-body: #FFFFFF;
+  --mascot-eyes: #000000;
+  --mascot-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --bg-primary: #0B0B0B;
+  --bg-secondary: #1A1A2E;
+  --bg-tertiary: #16213E;
+
+  --text-primary: #FFFFFF;
+  /* Pure White for high contrast */
+  --text-secondary: #CCCCCC;
+  /* Light Gray for high contrast */
+  --text-tertiary: #AAAAAA;
+  /* Medium-Light Gray for high contrast */
+
+  --accent-primary: #4FD1C5;
+  --accent-secondary: #E63946;
+  --accent-tertiary: #38A89D;
+
+  --border-color: rgba(255, 255, 255, 0.15);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+
+  --mascot-body: #F0F0F0;
+  --mascot-eyes: #000000;
+  --mascot-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* System preference based dark mode */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-primary: #0B0B0B;
+    --bg-secondary: #1A1A2E;
+    --bg-tertiary: #16213E;
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #CCCCCC;
+    --text-tertiary: #AAAAAA;
+
+    --border-color: rgba(255, 255, 255, 0.15);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Theme transition */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Apply theme variables */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}

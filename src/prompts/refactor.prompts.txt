@@ -1,0 +1,46 @@
+REFACTORING PROMPTS
+
+=== Performance Optimization ===
+Improve animation performance:
+- Use requestAnimationFrame throttling
+- Implement object pooling for particles
+- Lazy load Three.js assets
+- Use CSS transforms over layout properties
+- Debounce resize handlers
+- Profile and optimize hot paths
+
+=== Code Quality ===
+Refactor for maintainability:
+- Extract magic numbers to constants
+- Create shared type definitions
+- Implement proper error boundaries
+- Add JSDoc comments to public APIs
+- Remove dead code and unused imports
+- Consolidate duplicate logic
+
+=== Accessibility Improvements ===
+Enhance accessibility:
+- Add ARIA labels to interactive elements
+- Implement keyboard navigation
+- Support screen readers for mascot speech
+- Provide text alternatives for animations
+- Test with reduced motion preference
+- Ensure sufficient color contrast
+
+=== Mobile Optimization ===
+Optimize for mobile devices:
+- Reduce particle count (50% on mobile)
+- Disable 3D effects on low-end devices
+- Implement touch-specific interactions
+- Optimize images with srcset
+- Use intersection observer for lazy loading
+- Test on real devices
+
+=== Bundle Size ===
+Reduce bundle size:
+- Tree-shake unused GSAP plugins
+- Dynamic import Three.js
+- Compress audio files (use mp3 over wav)
+- Optimize SVG assets
+- Enable gzip/brotli compression
+- Analyze bundle with rollup-plugin-visualizer

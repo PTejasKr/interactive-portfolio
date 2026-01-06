@@ -1,0 +1,39 @@
+MASCOT COMPONENT PROMPTS
+
+=== Eye Tracking ===
+Generate smooth eye tracking logic that:
+- Follows cursor position using vector math
+- Has limited rotation angles (max 15 degrees)
+- Uses smooth interpolation (lerp) for movement
+- Includes random blink animation every 3-6 seconds
+- Widens eyes on hover, squints on suspicion
+
+=== Belly Interaction ===
+Generate belly hover and click effects:
+- Hover: gentle giggle sound, soft belly bounce (scale 1.1)
+- Click: bigger laugh, wave animation, aqua particle burst
+- Ripple shader effect emanating from touch point
+
+=== Emotional States ===
+Implement state machine for mascot emotions:
+- IDLE: slow breathing, soft ambient hum
+- CURIOUS: eyes widen, higher pitch blip, lean forward
+- HAPPY: giggle loop, bounce animation, sparkles
+- EXCITED: rapid bounce, brighter glow, chime sound
+- SLEEPY: droopy eyes, slow breathing, gradual fade
+
+=== Speech System ===
+Create tooltip-based speech system:
+- Bubble appears above mascot head
+- Typewriter effect for text reveal (30ms per char)
+- Audio blip accompanies each character
+- Auto-dismiss after 4 seconds or on click
+- Queue system for multiple messages
+
+=== Fur Effect ===
+Generate fluffy fur particle system:
+- 500+ small white particles around body sphere
+- Particles sway gently with idle animation
+- React to cursor proximity (repulsion)
+- Scale slightly with audio amplitude
+- Soft gaussian blur for fluffiness

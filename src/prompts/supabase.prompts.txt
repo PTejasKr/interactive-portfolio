@@ -1,0 +1,70 @@
+SUPABASE BACKEND PROMPTS
+
+=== Database Schema ===
+Create PostgreSQL tables:
+
+profile_info:
+- id (uuid, primary key)
+- name (text)
+- title (text)
+- bio (text)
+- avatar_url (text)
+- updated_at (timestamp)
+
+skills:
+- id (uuid, primary key)
+- name (text)
+- level (integer, 0-100)
+- category (text)
+- icon_url (text)
+
+projects:
+- id (uuid, primary key)
+- github_repo (text)
+- title (text)
+- description (text)
+- tech_stack (text[])
+- live_url (text)
+- featured (boolean)
+
+interactions:
+- id (uuid, primary key)
+- interaction_type (text)
+- sound_triggered (boolean)
+- timestamp (timestamp)
+- metadata (jsonb)
+
+contact_messages:
+- id (uuid, primary key)
+- name (text)
+- email (text)
+- message (text)
+- created_at (timestamp)
+
+=== Row Level Security ===
+Implement RLS policies:
+- profile_info: public read, admin write
+- skills: public read, admin write
+- projects: public read, admin write
+- interactions: anonymous insert, admin read
+- contact_messages: anonymous insert, admin read
+
+=== Edge Functions ===
+Create Deno edge functions:
+
+github-fetch:
+- Triggered by cron (daily) or manual
+- Fetches repos from GitHub API
+- Upserts to projects table
+- Logs sync status
+
+interaction-logger:
+- Receives interaction events
+- Validates payload
+- Inserts to interactions table
+- Rate limited (100/hour per IP)
+
+rate-limit:
+- Middleware for all functions
+- Uses sliding window algorithm
+- Returns 429 when exceeded

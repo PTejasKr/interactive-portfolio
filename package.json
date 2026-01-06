@@ -1,0 +1,31 @@
+{
+  "name": "interactive-portfolio",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "generate-prompts": "ts-node scripts/generate-prompts.ts",
+    "optimize-assets": "ts-node scripts/optimize-assets.ts",
+    "sync-github": "ts-node scripts/sync-github-cache.ts"
+  },
+  "dependencies": {
+    "three": "^0.160.0",
+    "gsap": "^3.12.4",
+    "framer-motion": "^10.18.0",
+    "howler": "^2.2.4",
+    "animejs": "^3.2.2",
+    "@supabase/supabase-js": "^2.39.0",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "@types/three": "^0.160.0",
+    "@types/howler": "^2.2.11",
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.32",
+    "autoprefixer": "^10.4.16"
+  }
+}

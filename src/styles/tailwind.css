@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-beige: #F5F0E6;
+    --color-white: #FFFFFF;
+    --color-black: #0B0B0B;
+    --color-red: #E63946;
+    --color-aqua: #4FD1C5;
+    --color-dark: #0B0B0B;
+    --color-aqua-dark: #38A89D;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-accent-aqua text-dark font-semibold rounded-full 
+           hover:bg-aqua-dark transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-dark font-semibold rounded-full 
+           border-2 border-dark hover:bg-dark hover:text-white 
+           transition-colors duration-200;
+  }
+
+  .btn-ghost {
+    @apply px-6 py-3 bg-transparent text-dark font-semibold rounded-full 
+           hover:bg-white/50 transition-colors duration-200;
+  }
+
+  .card-glass {
+    @apply bg-white/70 backdrop-blur-md rounded-2xl shadow-lg 
+           hover:shadow-xl transition-shadow duration-300;
+  }
+
+  .card-solid {
+    @apply bg-white rounded-2xl shadow-lg border border-gray-100;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-white border-2 border-gray-200 rounded-lg 
+           focus:border-accent-aqua focus:outline-none transition-colors;
+  }
+
+  .section-padding {
+    @apply py-24 px-6;
+  }
+
+  .container-narrow {
+    @apply max-w-3xl mx-auto;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent 
+           bg-gradient-to-r from-accent-aqua to-accent-red;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}

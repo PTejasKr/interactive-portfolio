@@ -1,0 +1,32 @@
+GITHUB INTEGRATION PROMPTS
+
+=== API Fetching ===
+Generate GitHub API client that:
+- Fetches user profile and repositories
+- Uses REST API v3 with optional auth token
+- Implements response caching (24 hour TTL)
+- Handles rate limiting gracefully
+- Falls back to cached/mock data on error
+
+=== Project Cards ===
+Create project card component:
+- Display: name, description, language, stars, forks
+- Language color indicator matching GitHub colors
+- Topic tags as rounded pills
+- Tilt effect on hover (3D perspective)
+- Links to repo and live demo
+
+=== Filtering System ===
+Implement project filtering:
+- Categories: All, Frontend, Backend, Full Stack
+- Determine category from language + topics
+- Smooth GSAP transitions when filtering
+- Active filter state management
+
+=== Caching Strategy ===
+Design caching system:
+- Store in localStorage with timestamp
+- Validate cache age on load (24 hours)
+- Background refresh when stale
+- Sync with Supabase for persistence
+- Clear cache on user request

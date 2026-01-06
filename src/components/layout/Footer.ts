@@ -2,17 +2,12 @@
 
 export class Footer {
   render(): string {
-    const currentYear = new Date().getFullYear();
-
     return `
       <footer class="bg-dark text-white py-12">
         <div class="max-w-7xl mx-auto px-6">
           <div class="flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
-              <p class="text-2xl font-bold mb-2">
-                Portfolio<span class="text-accent-aqua">.</span>
-              </p>
-              <p class="text-gray-400">&copy; ${currentYear} Built with passion and code</p>
+              <!-- Branding removed as requested -->
             </div>
 
             <div class="flex items-center gap-6">

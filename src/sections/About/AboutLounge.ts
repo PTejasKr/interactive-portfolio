@@ -17,7 +17,7 @@ export class AboutLounge extends Section {
         <div class="relative">
           <div class="about-image w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full bg-gradient-to-br from-accent-aqua to-accent-red/50 p-1">
             <div class="w-full h-full rounded-full overflow-hidden">
-              <img src="/profile.png" alt="Profile Picture" class="w-full h-full object-cover" />
+              <img src="/baymax.png" alt="Profile Picture" class="w-full h-full object-cover" />
             </div>
           </div>
           
